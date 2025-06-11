@@ -1,3 +1,5 @@
 # Ignore Python virtual environment folders
 .venv/
 venv/
+src/models/
+
