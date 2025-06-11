@@ -1,7 +1,5 @@
-torch>=2.0
-transformers>=4.40
-datasets
-scikit-learn
-pandas
-beautifulsoup4
-tqdm
+autogluon==1.0.0
+pandas>=1.5.0
+scikit-learn>=1.2.0
+matplotlib>=3.6.0
+jupyterlab
