@@ -27,3 +27,42 @@ student_performance/
 ├── models/           # checkpoints & logs
 ├── requirements.txt  # Python deps
 └── README.md         # this file
+```
+
+## 🛠️ Step-by-Step: Set Up & Use a Python Virtual Environment
+
+This project uses a Python virtual environment and `requirements.txt`  
+for reproducible, isolated installation of all dependencies.
+
+---
+
+### 1. **Create the virtual environment**
+
+Open a terminal in your project root and run:
+
+```bash
+python -m venv .venv
+```
+## 2. Activate the virtual environment
+
+**macOS / Linux:**
+
+```bash
+source .venv/bin/activate
+```
+
+## 3. Upgrade pip (recommended)
+
+Upgrade pip to the latest version by running:
+
+```bash
+pip install --upgrade pip
+```
+
+## 4. Install dependencies from requirements.txt
+
+Make sure your `requirements.txt` file is in the root folder, then run:
+
+```bash
+pip install -r requirements.txt
+```
