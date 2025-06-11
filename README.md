@@ -1,52 +1,29 @@
-# 🛡️ Phishing-Email Detection (ML Final Project)
+# 🎓 Student-Performance Classification  
+*ML Final Project – Tabular Deep-Learning Models*
 
-Compare a **state-of-the-art Transformer** (DeBERTa-v3-small) against a compact **CNN + Bi-LSTM** baseline on a public phishing-e-mail dataset.  
-Everything you need—folder layout, environment setup, data-cleaning recipe, and training commands—is documented **in this single README**.
+We will predict **student achievement** from socio-academic factors using the  
+[Kaggle *Student Performance Factors* dataset](https://www.kaggle.com/datasets/lainguyn123/student-performance-factors).  
+Instead of forecasting a raw test score we convert the numeric **`Exam_Score`** into **three classes**:
+
+| Class | Rule (default) | Meaning |
+|-------|----------------|---------|
+| **Bad**    | `score < 60`      | Fail / poor performance |
+| **Medium** | `60 ≤ score < 80` | Average |
+| **Good**   | `score ≥ 80`      | High achievement |
+
+*Thresholds live in `config.yaml`; adjust to your grading scheme or switch to equal-frequency (tercile) binning with one flag.*
 
 ---
 
-## 📌 Project Goals
-
-| Goal | Why it matters |
-|------|----------------|
-| **Binary classification** (phish vs legit) | Core to enterprise e-mail security |
-| **Model comparison** (SOTA vs lightweight) | Explore accuracy ↔ compute trade-offs |
-| **Rapid delivery (≈ 2 weeks)** | Fits typical course / hackathon deadlines |
-
----
-
-## 📁 Recommended Folder Structure
+## 📁 Folder Layout
 
 ```text
-phishing_project/
+student_performance/
 ├── data/
-│   ├── raw/          # drop the original Kaggle CSV here
-│   └── processed/    # JSONL splits & vocab (after cleaning)
-├── notebooks/        # Jupyter notebooks you create
-├── src/              # (optional) training scripts
-├── models/           # saved checkpoints (populated after training)
+│   ├── raw/          # ⬇️  put student-performance-factors.csv here
+│   └── processed/    # train/val/test CSVs after cleaning + target bins
+├── notebooks/        # EDA & preprocessing notebooks
+├── src/              # training / evaluation scripts
+├── models/           # checkpoints & logs
 ├── requirements.txt  # Python deps
 └── README.md         # this file
-```
-
-
-
-## setup venv
-python -m venv .venv
-# macOS / Linux
-source .venv/bin/activate
-
-
-pip install --upgrade pip
-pip install -r requirements.txt
-# For GPU: 
-follow the CUDA wheel instructions at https://pytorch.org
-
-# verify installation
-```
-python - <<'PY'
-import torch, transformers, pandas; print(
-  "Torch", torch.__version__, "| CUDA:", torch.cuda.is_available(),
-  "\nTransformers", transformers.__version__)
-PY
-```
